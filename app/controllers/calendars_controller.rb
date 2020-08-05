@@ -16,10 +16,13 @@ class CalendarsController < ApplicationController
 
   def plan_params
     params.require(:post).permit(:date, :plan)
+
   end
 
   def getWeek
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
+    today = Date.today.wday
+    @days = wdays[today]
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
     @todays_date = Date.today
